@@ -2870,7 +2870,7 @@ function run() {
             const restore_keys = core.getMultilineInput('restore_keys');
             const reducer = (arr, item) => [...arr, '-restore', item];
             const restore_args = restore_keys.reduce(reducer, ['-restore', key]);
-            yield exec.exec('gcs-cacher', ['-bucket', bucket, ...restore_args, '-dir', path]);
+            yield exec.exec('gcs-cacher', ['-bucket', bucket, ...restore_args, '-dir', path], { ignoreReturnCode: true });
         }
         catch (error) {
             if (error instanceof Error)

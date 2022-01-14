@@ -13,7 +13,11 @@ async function run(): Promise<void> {
     const reducer = (arr: string[], item: string) => [...arr, '-restore', item];
     const restore_args = restore_keys.reduce(reducer, ['-restore', key]);
 
-    await exec.exec('gcs-cacher', ['-bucket', bucket, ...restore_args, '-dir', path]);
+    await exec.exec(
+      'gcs-cacher',
+      ['-bucket', bucket, ...restore_args, '-dir', path],
+      { ignoreReturnCode: true }
+    );
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

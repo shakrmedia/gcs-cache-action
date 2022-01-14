@@ -2867,7 +2867,13 @@ function run() {
             }
             const path = core.getInput('path');
             const key = core.getInput('key');
-            yield exec.exec('gcs-cacher', ['-bucket', bucket, '-cache', key, '-dir', path]);
+            try {
+                yield exec.exec('gcs-cacher', ['-bucket', bucket, '-cache', key, '-dir', path]);
+            }
+            catch (e) {
+                core.info('Cache saving failed or interrupted; removing incomplete archive from remote..');
+                yield exec.exec('gsutil', ['rm', key], { ignoreReturnCode: true });
+            }
         }
         catch (error) {
             if (error instanceof Error)
