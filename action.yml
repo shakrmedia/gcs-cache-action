@@ -13,5 +13,5 @@ inputs:
     description: 'multiline string of cache keys for partial matching'
 runs:
   using: 'node12'
-  main: 'dist/save/index.js'
-  post: 'dist/restore/index.js'
+  main: 'dist/restore/index.js'
+  post: 'dist/save/index.js'
