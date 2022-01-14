@@ -40,6 +40,9 @@ const wait_1 = __nccwpck_require__(817);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const path = core.getInput('path');
+            const keys = core.getInput('key');
+            const restore_keys = core.getMultilineInput('restore_keys');
             const ms = core.getInput('milliseconds');
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());

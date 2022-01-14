@@ -9,7 +9,9 @@
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
-    "package": "ncc build --source-map --license licenses.txt",
+    "build-restore": "ncc build --source-map --license licenses.txt -o dist/restore src/restore.ts",
+    "build-save": "ncc build --source-map --license licenses.txt -o dist/save src/save.ts",
+    "package": "npm run build-restore && npm run build-save",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
@@ -25,7 +27,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^16.10.5",
