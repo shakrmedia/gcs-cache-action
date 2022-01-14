@@ -8,5 +8,5 @@ inputs:
     default: 'default value if applicable'
 runs:
   using: 'node12'
-  main: 'dist/save.js'
-  post: 'dist/restore.js'
+  main: 'dist/save/index.js'
+  post: 'dist/restore/index.js'
