@@ -13,7 +13,7 @@
     "build-save": "ncc build --source-map --license licenses.txt -o dist/save src/save.ts",
     "package": "npm run build-restore && npm run build-save",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "all": "npm run build && npm run format && npm run lint && npm run package"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/node": "^18.11.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "@vercel/ncc": "^0.31.1",
+    "@vercel/ncc": "^0.34.0",
     "eslint": "^7.32.0",
     "eslint-plugin-github": "^4.3.2",
     "eslint-plugin-jest": "^25.3.2",

@@ -12,7 +12,11 @@ async function run(): Promise<void> {
     const key: string = core.getInput('key')
     const restore_keys: string[] = core.getMultilineInput('restore_keys')
 
-    const reducer = (arr: string[], item: string): string[] => [...arr, '-restore', item]
+    const reducer = (arr: string[], item: string): string[] => [
+      ...arr,
+      '-restore',
+      item
+    ]
     const restore_args = restore_keys.reduce(reducer, ['-restore', key])
 
     await exec.exec(
